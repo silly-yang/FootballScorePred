@@ -2,6 +2,7 @@
 from pandas import DataFrame
 from DBHelper import *
 
+
 def getMatchesByCompetition(competitions):
     DBConnection = DBHelper()
     matches = DBConnection.fetch(
@@ -23,6 +24,19 @@ def getMatchesByCompetition(competitions):
     df.to_csv('matches.csv')  # 相对位置
 
 
+def getTeamsByCompetition(competitionId):
+    DBConnection = DBHelper()
+    teams = DBConnection.fetch(
+        ('SELECT team_id, competition_id, short_name_zh, short_name_en, market_value FROM teams WHERE competition_id = %s'), competitionId
+    )
+
+    df = DataFrame(teams)
+
+    df.to_csv('teams.csv')  # 相对位置
+
+
 if __name__ == '__main__':
-    competitions = [82, 108, 120, 129, 142]
-    getMatchesByCompetition(competitions)
+    # competitions = [82, 108, 120, 129, 142]
+    # getMatchesByCompetition(competitions)
+
+    getTeamsByCompetition(82)

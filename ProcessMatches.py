@@ -14,7 +14,7 @@ def getMatchesByCompetition(competitions):
     )
 
     df = DataFrame(matches)
-    df = df.drop(columns=['status', 'start_time',
+    df = df.drop(columns=['start_time',
                           'home_extend', 'home_penalty', 'away_extend',
                           'away_penalty', 'match_description', 'ground',
                           'animation', 'live_streaming', 'detail', 'lineup',
@@ -37,6 +37,6 @@ def getTeamsByCompetition(competitionId):
 
 if __name__ == '__main__':
     # competitions = [82, 108, 120, 129, 142]
-    # getMatchesByCompetition(competitions)
+    getMatchesByCompetition([82])
 
-    getTeamsByCompetition(82)
+    # getTeamsByCompetition(82)

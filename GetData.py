@@ -110,8 +110,8 @@ def getIntelligenceByCompetition(competitionId):
         , competitionId
     )
 
-    changeDF = DataFrame(change)
-    changeDF.to_csv('data/' + str(competitionId) + '/change.csv')  # 相對位置
+    chanceDF = DataFrame(chance)
+    chanceDF.to_csv('data/' + str(competitionId) + '/chance.csv')  # 相對位置
 
 if __name__ == '__main__':
     getMatchesByCompetition(82)

@@ -93,7 +93,7 @@ def getIntelligenceByCompetition(competitionId):
     similarDF = DataFrame(similar)
     similarDF.to_csv('data/' + str(competitionId) + '/similar.csv')  # 相對位置
 
-    change = DBConnection.fetch(
+    chance = DBConnection.fetch(
         'SELECT  '
             'chance.match_id, '
             'chance.type, '

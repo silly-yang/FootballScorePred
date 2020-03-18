@@ -62,7 +62,8 @@ def getIntelligenceByCompetition(competitionId):
             'info.match_id, '
             'info.info_type, '
             'info.team_info, '
-            'info.level '
+            'info.level, '
+            'info.content '
         'FROM '
             'intelligence_info as info '
         'JOIN matches ON matches.match_id = info.match_id '
@@ -73,48 +74,48 @@ def getIntelligenceByCompetition(competitionId):
     infoDF = DataFrame(info)
     infoDF.to_csv('data/' + str(competitionId) + '/info.csv')  # 相對位置
 
-    similar = DBConnection.fetch(
-        'SELECT '
-            'similar.match_id, '
-            'similar.match_count, '
-            'similar.model_count, '
-            'similar.change_count, '
-            'similar.league_count, '
-            'similar.won, '
-            'similar.drawn, '
-            'similar.lost '
-        'FROM '
-            'intelligence_similar as similar '
-        'JOIN matches ON matches.match_id = similar.match_id '
-        'WHERE '
-            'matches.competition_id = %s'
-        , competitionId
-    )
+    # similar = DBConnection.fetch(
+    #     'SELECT '
+    #         'similar.match_id, '
+    #         'similar.match_count, '
+    #         'similar.model_count, '
+    #         'similar.change_count, '
+    #         'similar.league_count, '
+    #         'similar.won, '
+    #         'similar.drawn, '
+    #         'similar.lost '
+    #     'FROM '
+    #         'intelligence_similar as similar '
+    #     'JOIN matches ON matches.match_id = similar.match_id '
+    #     'WHERE '
+    #         'matches.competition_id = %s'
+    #     , competitionId
+    # )
 
-    similarDF = DataFrame(similar)
-    similarDF.to_csv('data/' + str(competitionId) + '/similar.csv')  # 相對位置
+    # similarDF = DataFrame(similar)
+    # similarDF.to_csv('data/' + str(competitionId) + '/similar.csv')  # 相對位置
 
-    chance = DBConnection.fetch(
-        'SELECT  '
-            'chance.match_id, '
-            'chance.type, '
-            'chance.team_info, '
-            'chance.won_count, '
-            'chance.drawn_count, '
-            'chance.lost_count, '
-            'chance.rate '
-        'FROM '
-            'intelligence_chance as chance '
-        'JOIN matches ON matches.match_id = chance.match_id '
-        'WHERE '
-            'matches.competition_id = %s'
-        , competitionId
-    )
+    # chance = DBConnection.fetch(
+    #     'SELECT  '
+    #         'chance.match_id, '
+    #         'chance.type, '
+    #         'chance.team_info, '
+    #         'chance.won_count, '
+    #         'chance.drawn_count, '
+    #         'chance.lost_count, '
+    #         'chance.rate '
+    #     'FROM '
+    #         'intelligence_chance as chance '
+    #     'JOIN matches ON matches.match_id = chance.match_id '
+    #     'WHERE '
+    #         'matches.competition_id = %s'
+    #     , competitionId
+    # )
 
-    chanceDF = DataFrame(chance)
-    chanceDF.to_csv('data/' + str(competitionId) + '/chance.csv')  # 相對位置
+    # chanceDF = DataFrame(chance)
+    # chanceDF.to_csv('data/' + str(competitionId) + '/chance.csv')  # 相對位置
 
 if __name__ == '__main__':
-    getMatchesByCompetition(82)
-    getTeamsByCompetition(82)
+    # getMatchesByCompetition(82)
+    # getTeamsByCompetition(82)
     getIntelligenceByCompetition(82)

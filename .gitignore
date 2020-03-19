@@ -133,3 +133,10 @@ dmypy.json
 
 # config
 config.ini
+
+# 存取DB資料py檔
+DBHelper.py
+GetData.py
+
+# 資料
+data/
